@@ -1,24 +1,26 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+          Professional Cloud Architect &nbsp;
+          <code className="font-mono font-bold">
+            https://github.com/luillyfe/gcp-exam/issues
+          </code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://cloud.google.com/learn/certification/cloud-architect"
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
+              src="/gcp.ico"
+              alt="Google Cloud Platform"
               className="dark:invert"
               width={100}
               height={24}
@@ -28,15 +30,93 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="max-w-5xl flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+        <fieldset className="flex items-center justify-center h-[480px]">
+          <legend className="w-full font-bold dark:text-gray-30">
+            <p>
+              You are a Cloud Architect working on a project for a large
+              e-commerce company. The company is looking to migrate their
+              e-commerce platform to Google Cloud Platform (GCP).
+            </p>
+            <br />
+            <p className="text-2xl">
+              The company has a requirement for high availability and disaster
+              recovery for their e-commerce platform. They also need to be able
+              to scale their platform to handle large spikes in traffic during
+              peak shopping seasons. How would you architect a solution on GCP
+              to meet these requirements?
+            </p>
+          </legend>
+
+          <div className="flex items-center mb-2">
+            <input
+              checked
+              id="a"
+              type="radio"
+              value="a"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="a"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Use a single region with multiple zones for high availability and
+              failover.
+            </label>
+          </div>
+
+          <div className="flex items-center mb-4">
+            <input
+              id="b"
+              type="radio"
+              value="b"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="b"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Deploy your application across multiple regions for global load
+              balancing.
+            </label>
+          </div>
+
+          <div className="flex items-center mb-4">
+            <input
+              id="c"
+              type="radio"
+              value="c"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="c"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Implement a hybrid cloud solution with on-premises and GCP
+              resources.
+            </label>
+          </div>
+
+          <div className="flex mb-4">
+            <div className="flex items-center h-5">
+              <input
+                id="d"
+                type="radio"
+                value="d"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+            </div>
+            <div className="ms-2 text-sm">
+              <label
+                htmlFor="d"
+                className="font-medium text-gray-900 dark:text-gray-300"
+              >
+                Use a combination of Cloud Storage, Cloud SQL, and Cloud
+                Bigtable for storage and data management.
+              </label>
+            </div>
+          </div>
+        </fieldset>
       </div>
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
@@ -47,7 +127,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
+            Docs{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -64,7 +144,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
+            Learn{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -81,7 +161,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
+            Templates{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -98,7 +178,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
+            Deploy{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -109,5 +189,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
