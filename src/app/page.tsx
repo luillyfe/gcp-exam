@@ -48,7 +48,6 @@ export default function Home() {
 
           <div className="flex items-center mb-2">
             <input
-              checked
               id="a"
               type="radio"
               value="a"
