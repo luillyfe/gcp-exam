@@ -17,11 +17,9 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
             <Image
               src="/gcp.ico"
               alt="Google Cloud Platform"
-              className="dark:invert"
               width={100}
               height={24}
               priority
@@ -34,8 +32,8 @@ export default function Home() {
         <fieldset className="flex items-center justify-center h-[480px]">
           <legend className="w-full font-bold dark:text-gray-30">
             <p>
-              You are a Cloud Architect working on a project for a large
-              e-commerce company. The company is looking to migrate their
+              Context: You are a Cloud Architect working on a project for a
+              large e-commerce company. The company is looking to migrate their
               e-commerce platform to Google Cloud Platform (GCP).
             </p>
             <br />
