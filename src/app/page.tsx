@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Answer from "@/app/answer";
+import Answer from "@/app/components/answer";
 
 export default function Home() {
   return (
@@ -73,6 +73,8 @@ export default function Home() {
           />
         </fieldset>
       </div>
+
+      <div />
     </main>
   );
 }
