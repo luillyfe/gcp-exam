@@ -1,8 +1,13 @@
 import Image from "next/image";
 
-import Answer from "@/app/components/answer";
+import { run as predict } from "@/app/lib/generativeAI";
 
-export default function Home() {
+import Option from "@/app/components/option";
+
+export default async function Home() {
+  const gcpExamOutput = await predict();
+  const data = JSON.parse(gcpExamOutput);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -33,44 +38,15 @@ export default function Home() {
       <div className="max-w-5xl flex place-items-center">
         <fieldset className="flex items-center justify-center h-[480px]">
           <legend className="w-full font-bold dark:text-gray-30">
-            <p>
-              Context: You are a Cloud Architect working on a project for a
-              large e-commerce company. The company is looking to migrate their
-              e-commerce platform to Google Cloud Platform (GCP).
-            </p>
+            <p>Context: {data.context}</p>
             <br />
-            <p className="text-2xl">
-              The company has a requirement for high availability and disaster
-              recovery for their e-commerce platform. They also need to be able
-              to scale their platform to handle large spikes in traffic during
-              peak shopping seasons. How would you architect a solution on GCP
-              to meet these requirements?
-            </p>
+            <p className="text-2xl">{data.situationalQuestion}</p>
           </legend>
 
-          <Answer
-            text="Use a single region with multiple zones for high availability and
-              failover."
-            id="a"
-          />
-
-          <Answer
-            text="Deploy your application across multiple regions for global load
-            balancing."
-            id="b"
-          />
-
-          <Answer
-            text="Implement a hybrid cloud solution with on-premises and GCP
-            resources."
-            id="c"
-          />
-
-          <Answer
-            text="Use a combination of Cloud Storage, Cloud SQL, and Cloud
-            Bigtable for storage and data management."
-            id="d"
-          />
+          {<Option key={"a"} text={data.options.a} id={"a"} />}
+          {<Option key={"b"} text={data.options.b} id={"b"} />}
+          {<Option key={"c"} text={data.options.c} id={"c"} />}
+          {<Option key={"d"} text={data.options.d} id={"d"} />}
         </fieldset>
       </div>
 
