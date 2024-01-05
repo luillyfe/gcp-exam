@@ -1,18 +1,13 @@
 import Image from "next/image";
 
-import { run as predict } from "@/app/lib/generativeAI";
+import Statement from "@/app/components/statement";
 
-import Option from "@/app/components/option";
-
-export default async function Home() {
-  const gcpExamOutput = await predict();
-  const data = JSON.parse(gcpExamOutput);
-
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Professional Cloud Architect &nbsp;
+          Professional Cloud Architect Exam Prep &nbsp;
           <code className="font-mono font-bold">
             https://github.com/luillyfe/gcp-exam/issues
           </code>
@@ -35,20 +30,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="max-w-5xl flex place-items-center">
-        <fieldset className="flex items-center justify-center h-[480px]">
-          <legend className="w-full font-bold dark:text-gray-30">
-            <p>Context: {data.context}</p>
-            <br />
-            <p className="text-2xl">{data.situationalQuestion}</p>
-          </legend>
-
-          {<Option key={"a"} text={data.options.a} id={"a"} />}
-          {<Option key={"b"} text={data.options.b} id={"b"} />}
-          {<Option key={"c"} text={data.options.c} id={"c"} />}
-          {<Option key={"d"} text={data.options.d} id={"d"} />}
-        </fieldset>
-      </div>
+      <Statement />
 
       <div />
     </main>
