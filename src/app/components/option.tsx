@@ -11,7 +11,7 @@ export default function Option({
 }: {
   text: string;
   id: string;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (id: string) => void;
   checked: boolean;
 }) {
   return (
@@ -20,12 +20,11 @@ export default function Option({
         "group rounded-lg border border-transparent px-5 py-4 transition-colors hover:bg-gray-100 hover:dark:border-neutral-100 hover:dark:bg-neutral-800/30",
         { "dark:border-neutral-100": checked }
       )}
-      // @ts-expect-error: to fix later
-      onClick={(event) => handleChange(event)}
+      onClick={() => handleChange(id)}
     >
       <input
         checked={checked}
-        onChange={handleChange}
+        onChange={() => handleChange(id)}
         id={id}
         type="radio"
         value={id}
