@@ -1,6 +1,6 @@
 import { run as predict } from "@/app/lib/generativeAI";
 
-import Options from "@/app/components/options";
+import OptionsWrapper from "@/app/components/optionsWrapper";
 
 export default async function Statement() {
   const gcpExamOutput = await predict();
@@ -14,7 +14,7 @@ export default async function Statement() {
         <p className="text-2xl">{data.situationalQuestion}</p>
       </header>
 
-      <Options data={data.options} />
+      <OptionsWrapper data={data.options} />
     </div>
   );
 }

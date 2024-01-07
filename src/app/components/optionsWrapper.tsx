@@ -3,14 +3,14 @@ import { useState, ChangeEvent } from "react";
 
 import Option from "@/app/components/option";
 
-export default function Options({
+export default function OptionsWrapper({
   data,
 }: {
   data: { a: string; b: string; c: string; d: string };
 }) {
   const [checked, setChecked] = useState("");
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.value);
+  const handleChange = (id: string) => {
+    setChecked(id);
   };
 
   return (
