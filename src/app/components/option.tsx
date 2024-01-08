@@ -1,20 +1,43 @@
-export default function Option({ text, id }: { text: string; id: string }) {
+"use client";
+import { ChangeEvent } from "react";
+
+import clsx from "clsx";
+
+export default function Option({
+  text,
+  id,
+  handleChange,
+  checked,
+}: {
+  text: string;
+  id: string;
+  handleChange: (id: string) => void;
+  checked: boolean;
+}) {
   return (
-    <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-      {/* TODO: review semantic html tags */}
-      <h2 className={`mb-3 text-2xl font-semibold uppercase`}>
-        {id}{" "}
-        <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-          -&gt;
-        </span>
-      </h2>
+    <div
+      className={clsx(
+        "group rounded-lg border border-transparent px-5 py-4 transition-colors hover:bg-gray-100 hover:dark:border-neutral-100 hover:dark:bg-neutral-800/30",
+        { "dark:border-neutral-100": checked }
+      )}
+      onClick={() => handleChange(id)}
+    >
       <input
+        checked={checked}
+        onChange={() => handleChange(id)}
         id={id}
         type="radio"
         value={id}
-        className="hidden w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        className="hidden w-4 h-4"
       />
+
       <label htmlFor={id} className={`mb-3 text-sm`}>
+        <h2 className={`mb-3 text-2xl font-semibold uppercase`}>
+          {id}{" "}
+          <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+            -&gt;
+          </span>
+        </h2>
         {text}
       </label>
     </div>
