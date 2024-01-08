@@ -11,10 +11,10 @@ export default async function Statement() {
       <header className="w-full font-bold dark:text-gray-30">
         <p>Context: {data.context}</p>
         <br />
-        <p className="text-2xl">{data.situationalQuestion}</p>
+        <p className="text-2xl mb-4">{data.situationalQuestion}</p>
       </header>
 
-      <OptionsWrapper data={data.options} />
+      <OptionsWrapper data={data.options} feedback={data.feedback} />
     </div>
   );
 }
