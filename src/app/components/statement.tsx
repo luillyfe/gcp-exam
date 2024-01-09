@@ -9,8 +9,7 @@ export default async function Statement() {
   return (
     <div className="max-w-5xl flex place-items-center flex-col justify-between">
       <header className="w-full font-bold dark:text-gray-30">
-        <p>Context: {data.context}</p>
-        <br />
+        <p className="mt-4 mb-4">Context: {data.context}</p>
         <p className="text-2xl mb-4">{data.situationalQuestion}</p>
       </header>
 

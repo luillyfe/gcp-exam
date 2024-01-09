@@ -23,10 +23,10 @@ export default function OptionsWrapper({
     setCorrectOption("");
   };
 
+  // TODO: if no input control has been selected, show an alert.
   function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: if no input control has been selected, show an alert
-    // TODO: if input control has been selected, mark the input control
+    // if input control has been selected, mark the input control
     // as correct or incorrect
     if (feedback.option === checked) {
       setCorrectOption(feedback.option);
