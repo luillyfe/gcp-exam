@@ -1,7 +1,9 @@
 "use client";
-import { useState, ChangeEvent, useCallback } from "react";
+import { useState, ChangeEvent, useCallback, useEffect } from "react";
 
 import clsx from "clsx";
+
+import { getNextQuestion } from "@/app/actions";
 
 import Option from "@/app/components/option";
 
@@ -18,6 +20,8 @@ export default function OptionsWrapper({
 }) {
   const [checked, setChecked] = useState("");
   const [correct, setCorrectOption] = useState("");
+  const [disableNext, setDisableNext] = useState(false);
+
   const handleChange = useCallback((id: string) => {
     setChecked(id);
     setCorrectOption("");
@@ -36,9 +40,15 @@ export default function OptionsWrapper({
   }
 
   function handleNext() {
+    setDisableNext(true);
+    getNextQuestion();
+  }
+
+  useEffect(() => {
     setChecked("");
     setCorrectOption("");
-  }
+    setDisableNext(false);
+  }, [data]);
 
   return (
     <form
@@ -96,12 +106,13 @@ export default function OptionsWrapper({
 
       {checked && correct !== "" ? (
         <button
+          disabled={disableNext}
           type="button"
           onClick={handleNext}
           className={clsx(
             "bg-blue-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded dark:bg-gray-700 dark:text-gray-200",
             {
-              "opacity-50": !checked,
+              "opacity-50": disableNext,
             }
           )}
         >
