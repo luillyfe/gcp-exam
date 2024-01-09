@@ -1,18 +1,20 @@
 "use client";
+import { memo } from "react";
+
 import clsx from "clsx";
 
-export default function Option({
+function Option({
   text,
   id,
   handleChange,
   checked = false,
-  correct,
+  correct = "",
 }: {
   text: string;
   id: string;
   handleChange: (id: string) => void;
   checked: boolean;
-  correct?: string;
+  correct: string;
 }) {
   return (
     <div
@@ -51,3 +53,5 @@ export default function Option({
     </div>
   );
 }
+
+export default memo(Option);

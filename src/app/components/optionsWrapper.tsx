@@ -1,5 +1,5 @@
 "use client";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useCallback } from "react";
 
 import clsx from "clsx";
 
@@ -18,10 +18,10 @@ export default function OptionsWrapper({
 }) {
   const [checked, setChecked] = useState("");
   const [correct, setCorrectOption] = useState("");
-  const handleChange = (id: string) => {
+  const handleChange = useCallback((id: string) => {
     setChecked(id);
     setCorrectOption("");
-  };
+  }, []);
 
   // TODO: if no input control has been selected, show an alert.
   function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
@@ -30,10 +30,8 @@ export default function OptionsWrapper({
     // as correct or incorrect
     if (feedback.option === checked) {
       setCorrectOption(feedback.option);
-      console.log(feedback.explanation);
     } else {
       setCorrectOption(feedback.option);
-      console.log("wrong");
     }
   }
 
@@ -42,7 +40,7 @@ export default function OptionsWrapper({
       className="w-full flex flex-col justify-around"
       onSubmit={handleSubmit}
     >
-      <fieldset className="flex items-center justify-between mb-4">
+      <fieldset className="flex justify-between mb-4">
         {
           <Option
             handleChange={handleChange}
