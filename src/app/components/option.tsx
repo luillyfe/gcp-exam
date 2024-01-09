@@ -1,24 +1,32 @@
 "use client";
-import { ChangeEvent } from "react";
-
 import clsx from "clsx";
 
 export default function Option({
   text,
   id,
   handleChange,
-  checked,
+  checked = false,
+  correct,
 }: {
   text: string;
   id: string;
   handleChange: (id: string) => void;
   checked: boolean;
+  correct?: string;
 }) {
   return (
     <div
       className={clsx(
         "group rounded-lg border border-transparent px-5 py-4 transition-colors hover:bg-gray-100 hover:dark:border-neutral-100 hover:dark:bg-neutral-800/30",
-        { "dark:border-neutral-100": checked }
+        { "dark:border-neutral-100": checked },
+        {
+          "dark:border-green-700 dark:text-green-700":
+            checked && correct === id,
+        },
+        {
+          "dark:border-red-700 dark:text-red-700":
+            checked && correct && correct !== id,
+        }
       )}
       onClick={() => handleChange(id)}
     >
