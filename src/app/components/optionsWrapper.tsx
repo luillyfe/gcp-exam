@@ -35,6 +35,11 @@ export default function OptionsWrapper({
     }
   }
 
+  function handleNext() {
+    setChecked("");
+    setCorrectOption("");
+  }
+
   return (
     <form
       className="w-full flex flex-col justify-around"
@@ -89,18 +94,33 @@ export default function OptionsWrapper({
         </p>
       )}
 
-      <button
-        disabled={!checked}
-        type="submit"
-        className={clsx(
-          "bg-blue-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded dark:bg-gray-700 dark:text-gray-200",
-          {
-            "opacity-50": !checked,
-          }
-        )}
-      >
-        Submit
-      </button>
+      {checked && correct !== "" ? (
+        <button
+          type="button"
+          onClick={handleNext}
+          className={clsx(
+            "bg-blue-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded dark:bg-gray-700 dark:text-gray-200",
+            {
+              "opacity-50": !checked,
+            }
+          )}
+        >
+          Next
+        </button>
+      ) : (
+        <button
+          disabled={!checked}
+          type="submit"
+          className={clsx(
+            "bg-blue-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded dark:bg-gray-700 dark:text-gray-200",
+            {
+              "opacity-50": !checked,
+            }
+          )}
+        >
+          Submit
+        </button>
+      )}
     </form>
   );
 }
