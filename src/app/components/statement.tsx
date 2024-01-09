@@ -1,10 +1,9 @@
-import { run as predict } from "@/app/lib/generativeAI";
+import { predict } from "@/app/lib/generativeAI";
 
 import OptionsWrapper from "@/app/components/optionsWrapper";
 
 export default async function Statement() {
-  const gcpExamOutput = await predict();
-  const data = JSON.parse(gcpExamOutput);
+  const data = await predict();
 
   return (
     <div className="max-w-5xl flex place-items-center flex-col justify-between">

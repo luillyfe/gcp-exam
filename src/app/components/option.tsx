@@ -20,7 +20,7 @@ function Option({
     <div
       className={clsx(
         "group rounded-lg border border-transparent px-5 py-4 transition-colors hover:bg-gray-100 hover:dark:border-neutral-100 hover:dark:bg-neutral-800/30",
-        { "dark:border-neutral-100": checked },
+        { "dark:border-neutral-100": checked && !correct },
         {
           "dark:border-green-700 dark:text-green-700":
             checked && correct === id,
