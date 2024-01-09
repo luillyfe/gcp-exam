@@ -48,7 +48,7 @@ export default function OptionsWrapper({
     setChecked("");
     setCorrectOption("");
     setDisableNext(false);
-  }, [data]);
+  }, [data, feedback]);
 
   return (
     <form
@@ -98,19 +98,33 @@ export default function OptionsWrapper({
         }
       </fieldset>
 
+      {/* show feedback if the correct option has been selected */}
       {correct && checked === correct && (
         <p className="flex w-full justify-center rounded-lg border border-transparent border-b px-5 py-4 dark:border-green-700 dark:text-green-700 mb-2">
           <code className="font-mono font-bold">{feedback.explanation}</code>
         </p>
       )}
 
-      {checked && correct !== "" ? (
+      {/* show a message if data.a === "" || feedback.text === ""  */}
+      {(data.a === "" || feedback.text === "") && (
+        <p className="flex w-full justify-center rounded-lg border border-transparent border-b px-5 py-4 dark:border-red-700 dark:text-red-700 mb-2">
+          <code className="font-mono font-bold">
+            Something went wrong. Please click on the button below to try again.
+          </code>
+        </p>
+      )}
+
+      {/* show submit button if answer has not been submitted: checked && correct */}
+      {/* show next button if answer has been submitted: checked && correct */}
+      {/* disable next button if answer has been submitted and next question is loading */}
+      {/* show next button if some error has ocurred on the server: data = null || feedback = null */}
+      {(checked && correct !== "") || data.a === "" || feedback.text === "" ? (
         <button
           disabled={disableNext}
           type="button"
           onClick={handleNext}
           className={clsx(
-            "bg-blue-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded dark:bg-gray-700 dark:text-gray-200",
+            "  text-white font-bold py-2 px-4 rounded dark:bg-gray-200 dark:text-gray-700",
             {
               "opacity-50": disableNext,
             }
