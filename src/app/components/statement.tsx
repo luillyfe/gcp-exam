@@ -1,9 +1,10 @@
-import { run as predict } from "@/app/lib/generativeAI";
+import { predict } from "@/app/lib/generativeAI";
 
 import OptionsWrapper from "@/app/components/optionsWrapper";
 
 export default async function Statement() {
   const gcpExamOutput = await predict();
+  // @ts-expect-error: gcpExamOutput is a valid string since is coming from the Network
   const data = JSON.parse(gcpExamOutput);
 
   return (
