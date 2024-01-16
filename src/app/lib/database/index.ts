@@ -15,6 +15,7 @@ export async function insertIntoDatabase(data: Array<AIModelResponse>) {
     await client.sql`
             INSERT INTO questions (id, text, objective, difficulty)
             VALUES (${questionId}, ${question}, ${null}, 'easy')
+            ON CONFLICT (id) DO NOTHING;
         `;
 
     // Insert the answers into the answers table
@@ -25,6 +26,7 @@ export async function insertIntoDatabase(data: Array<AIModelResponse>) {
         return client.sql`
         INSERT INTO answers (id, question_id, text, is_correct)
         VALUES (${id}, ${questionId}, ${option.text}, ${option.isCorrect})
+        ON CONFLICT (id) DO NOTHING;
     `.then(() => {
           return { name: option.name, id };
         });
@@ -38,6 +40,7 @@ export async function insertIntoDatabase(data: Array<AIModelResponse>) {
         (exp) => client.sql`
         INSERT INTO feedback (question_id, answer_id, text)
         VALUES ( ${questionId}, ${findAnswerId(exp.name, answers)}, ${exp.text})
+        ON CONFLICT (id) DO NOTHING;
     `
       )
     );
