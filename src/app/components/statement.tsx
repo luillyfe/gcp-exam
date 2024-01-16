@@ -1,9 +1,7 @@
-import { run as predict } from "@/app/lib/generativeAI";
-
 import OptionsWrapper from "@/app/components/optionsWrapper";
 
 export default async function Statement() {
-  const gcpExamOutput = await predict();
+  const gcpExamOutput = "{}";
   const data = JSON.parse(gcpExamOutput);
 
   return (
