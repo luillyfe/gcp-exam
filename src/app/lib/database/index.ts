@@ -1,3 +1,4 @@
+"use server";
 const { db } = require("@vercel/postgres");
 const { v4: uuidv4 } = require("uuid");
 
