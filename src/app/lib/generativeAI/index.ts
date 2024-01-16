@@ -1,51 +1,47 @@
-const {
-  GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
-} = require("@google/generative-ai");
+// call run function from init file
+import { run } from "./init";
 
-const MODEL_NAME = process.env.MODEL_NAME;
-const API_KEY = process.env.API_KEY;
-const PROMPT = process.env.PROMPT;
+// interface for data
+interface Data {
+  context: string;
+  situationalQuestion: string;
+  options: {
+    a: string;
+    b: string;
+    c: string;
+    d: string;
+  };
+  feedback: {
+    option: string;
+    text: string;
+    explanation: string;
+  };
+}
 
-export async function run() {
-  const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-
-  const generationConfig = {
-    temperature: 0.9,
-    topK: 1,
-    topP: 1,
-    maxOutputTokens: 2048,
+// function to predict the next question
+export async function predict() {
+  const response = await run();
+  let data: Data = {
+    context: "",
+    situationalQuestion: "",
+    options: {
+      a: "",
+      b: "",
+      c: "",
+      d: "",
+    },
+    feedback: {
+      option: "",
+      text: "",
+      explanation: "",
+    },
   };
 
-  const safetySettings = [
-    {
-      category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-  ];
+  try {
+    data = JSON.parse(response);
+  } catch (error) {
+    console.log(error);
+  }
 
-  const parts = [{ text: PROMPT }];
-
-  const result = await model.generateContent({
-    contents: [{ role: "user", parts }],
-    generationConfig,
-    safetySettings,
-  });
-
-  const response = result.response;
-  return response.text();
+  return data;
 }
