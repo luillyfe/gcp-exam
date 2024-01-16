@@ -20,6 +20,7 @@ export async function GET() {
     const JSONString = getTextBetweenBackticks(response) || "{}";
     json = JSON.parse(JSONString);
   } catch {
+    console.error(response);
     return NextResponse.json(
       { message: "Error parsing response" },
       {
