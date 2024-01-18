@@ -1,3 +1,6 @@
+import { QueryResultRow } from "@vercel/postgres";
+import { QueryReponse } from "@/app/lib/definitions";
+
 // Dear Duet AI, help me write a function that given a text,
 // returns anything in between the backtips.
 // Example, Input: This is ```the text``` I want. Output: the text
@@ -39,4 +42,29 @@ export function validateResponse(response: Array<Response>): Array<Response> {
   }
 
   return response;
+}
+
+export function formatData(row: QueryResultRow): QueryReponse {
+  return {
+    question: row.question,
+    options: {
+      a: row.answers[0],
+      b: row.answers[1],
+      c: row.answers[2],
+      d: row.answers[3],
+    },
+    feedback: {
+      a: row.feedback[0],
+      b: row.feedback[1],
+      c: row.feedback[2],
+      d: row.feedback[3],
+    },
+    answer: row.iscorrect[0]
+      ? "a"
+      : row.iscorrect[1]
+      ? "b"
+      : row.iscorrect[2]
+      ? "c"
+      : "d",
+  };
 }
