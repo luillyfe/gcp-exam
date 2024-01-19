@@ -1,4 +1,4 @@
-import { QueryResponse } from "../definitions";
+import { QueryResponse } from "@/app/lib/definitions";
 
 type StoreState = {
   questionIndex: number;

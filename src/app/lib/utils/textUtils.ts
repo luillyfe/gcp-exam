@@ -1,5 +1,5 @@
 import { QueryResultRow } from "@vercel/postgres";
-import { QueryReponse } from "@/app/lib/definitions";
+import { QueryResponse } from "@/app/lib/definitions";
 
 // Dear Duet AI, help me write a function that given a text,
 // returns anything in between the backtips.
@@ -44,7 +44,7 @@ export function validateResponse(response: Array<Response>): Array<Response> {
   return response;
 }
 
-export function formatData(row: QueryResultRow): QueryReponse {
+export function formatData(row: QueryResultRow): QueryResponse {
   return {
     question: row.question,
     options: {
