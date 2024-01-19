@@ -35,7 +35,7 @@ export async function fetchQuestions() {
   });
 }
 
-export async function getNextQuestion() {
+export async function nextQuestion() {
   await fetchQuestions();
   revalidatePath("/");
 }
