@@ -1,8 +1,19 @@
 import Image from "next/image";
 
-import Statement from "@/app/components/statement";
+import { Store } from "@/app/lib/store";
 
-export default function Home() {
+import Statement from "@/app/components/statement";
+import { fetchQuestions } from "@/app/actions";
+
+export default async function Home() {
+  const myStore = Store.getStore();
+  const { questions } = myStore.getState();
+
+  // if store has not been initialized, then fetch the data
+  if (questions.length === 0) {
+    await fetchQuestions();
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">

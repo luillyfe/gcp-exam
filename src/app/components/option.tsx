@@ -8,26 +8,26 @@ function Option({
   id,
   handleChange,
   checked = false,
-  correct = "",
+  selected = "",
 }: {
   text: string;
   id: string;
   handleChange: (id: string) => void;
   checked: boolean;
-  correct: string;
+  selected: string;
 }) {
   return (
     <div
       className={clsx(
         "group rounded-lg border border-transparent px-5 py-4 transition-colors hover:bg-gray-100 hover:dark:border-neutral-100 hover:dark:bg-neutral-800/30",
-        { "dark:border-neutral-100": checked && !correct },
+        { "dark:border-neutral-100": checked && !selected },
         {
           "dark:border-green-700 dark:text-green-700":
-            checked && correct === id,
+            checked && selected === id,
         },
         {
           "dark:border-red-700 dark:text-red-700":
-            checked && correct && correct !== id,
+            selected !== "" && checked && selected !== id,
         }
       )}
       onClick={() => handleChange(id)}
