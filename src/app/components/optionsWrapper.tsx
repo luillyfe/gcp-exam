@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { Answer, Options } from "@/app/lib/definitions";
 
-import { fetchNextQuestion } from "@/app/actions";
+import { nextQuestion } from "@/app/actions";
 
 import Option from "@/app/components/option";
 
@@ -37,7 +37,7 @@ export default function OptionsWrapper({
 
   function handleNext() {
     setDisableNext(true);
-    fetchNextQuestion();
+    nextQuestion();
   }
 
   useEffect(() => {
