@@ -10,7 +10,13 @@ export default async function Statement() {
   return (
     <div className="max-w-5xl flex place-items-center flex-col justify-between">
       <header className="w-full font-bold dark:text-gray-30">
-        <p className="mt-4 mb-4">Context: {"context"}</p>
+        <p className="mt-4 mb-4">
+          Background: Acme Corporation is a leading provider of cloud-based
+          software solutions. The company has been using Google Cloud Platform
+          (GCP) for several years to host its applications and data. As the
+          company&rsquo;s cloud usage has grown, so has the need for skilled
+          cloud architects.
+        </p>
         <p className="text-2xl mb-4">{data.question}</p>
       </header>
 
