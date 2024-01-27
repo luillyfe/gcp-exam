@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ignite Your GCP Cloud Architect Prep with AI-Powered Q&A!
+
+**Harness the power of Gemini Pro for content generation.**
+
+## Overview
+
+This project leverages the power of Gemini Pro to generate realistic and challenging practice questions for the GCP Cloud Architect exam. By mimicking the actual exam format with multiple-choice answers, it provides an engaging and game-like experience that helps candidates solidify their knowledge and boost their confidence.
+
+## Features
+
+- **Content Generation power by Gemini Pro** for enhanced accuracy.
+
+## Target Audience
+
+Developers who want to:
+
+- Integrate Gemini Pro's capabilities into their applications.
+- Build creative content generation features applied to Cloud Computing.
+
+## Project Structure
+
+- **src/app/action:** This folder holds all the server actions, including the `getNextQuestion` function.
+- **src/api/generative-ai:** This folder defines the API route for connecting with the Google generative AI SDK, validating the response, formatting it, and storing it in a Vercel/PostgreSQL database.
+- **src/app/lib/database:** This folder defines all the functions to communicate with the database.
+- **src/app/lib/utils:** This folder manages all text formatting functions used in the application.
+
+This structure allows you to separate concerns and maintain a clean and modular codebase. It also makes it easier to scale the application as it grows. If you have any specific questions or need further guidance, feel free to ask.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository.
+2. Install dependencies: `npm install`
+3. Set environment variables: `MODEL_NAME` and `API_KEY`.
+4. Run the application: `npm run start`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Explore Further
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Gemini Docs:** [https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/gemini]
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We welcome contributions! Please see the Contributing Guidelines: [Link to contributing guidelines] for more information.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Let's unleash the potential of Gemini Pro together!**
